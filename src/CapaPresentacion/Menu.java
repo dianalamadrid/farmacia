@@ -17,7 +17,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-        this.setLocationRelativeTo(null);
+       
     }
 
     /**
@@ -30,19 +30,30 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
+        jSeparator8 = new javax.swing.JToolBar.Separator();
         btnProductos = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnCompras = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
         btnIngresos = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
         btnEgresos = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
         btnVentas = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
         btnCaja = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JToolBar.Separator();
         btnCerrar = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_mantenimiento = new javax.swing.JMenu();
         menu_item_tipoUsuario = new javax.swing.JMenuItem();
-        menu_item_usuario = new javax.swing.JMenuItem();
         menu_item_turno = new javax.swing.JMenuItem();
+        menu_item_marca = new javax.swing.JMenuItem();
+        menu_item_categoria = new javax.swing.JMenuItem();
+        menu_item_medida = new javax.swing.JMenuItem();
+        menu_item_usuario = new javax.swing.JMenuItem();
         menu_compras = new javax.swing.JMenu();
         menu_inventario = new javax.swing.JMenu();
         menu_ventas = new javax.swing.JMenu();
@@ -52,48 +63,56 @@ public class Menu extends javax.swing.JFrame {
         setExtendedState(6);
 
         jToolBar1.setRollover(true);
+        jToolBar1.add(jSeparator8);
 
         btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cajita.jpg"))); // NOI18N
         btnProductos.setFocusable(false);
         btnProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnProductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnProductos);
+        jToolBar1.add(jSeparator1);
 
         btnCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lista.jpg"))); // NOI18N
         btnCompras.setFocusable(false);
         btnCompras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCompras.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnCompras);
+        jToolBar1.add(jSeparator2);
 
         btnIngresos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ingresos.png"))); // NOI18N
         btnIngresos.setFocusable(false);
         btnIngresos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnIngresos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnIngresos);
+        jToolBar1.add(jSeparator3);
 
         btnEgresos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/egresos.png"))); // NOI18N
         btnEgresos.setFocusable(false);
         btnEgresos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEgresos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnEgresos);
+        jToolBar1.add(jSeparator4);
 
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compra_carrito.jpg"))); // NOI18N
         btnVentas.setFocusable(false);
         btnVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnVentas);
+        jToolBar1.add(jSeparator5);
 
         btnCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cajaa.jpg"))); // NOI18N
         btnCaja.setFocusable(false);
         btnCaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCaja.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnCaja);
+        jToolBar1.add(jSeparator6);
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrrarr.jpg"))); // NOI18N
         btnCerrar.setFocusable(false);
         btnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCerrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnCerrar);
+        jToolBar1.add(jSeparator7);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -103,7 +122,7 @@ public class Menu extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 626, Short.MAX_VALUE)
+            .addGap(0, 637, Short.MAX_VALUE)
         );
 
         menu_mantenimiento.setText("MANTENIMIENTO");
@@ -116,14 +135,6 @@ public class Menu extends javax.swing.JFrame {
         });
         menu_mantenimiento.add(menu_item_tipoUsuario);
 
-        menu_item_usuario.setText("Usuario");
-        menu_item_usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_item_usuarioActionPerformed(evt);
-            }
-        });
-        menu_mantenimiento.add(menu_item_usuario);
-
         menu_item_turno.setText("Turno");
         menu_item_turno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +142,38 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menu_mantenimiento.add(menu_item_turno);
+
+        menu_item_marca.setText("Laboratorio");
+        menu_item_marca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_marcaActionPerformed(evt);
+            }
+        });
+        menu_mantenimiento.add(menu_item_marca);
+
+        menu_item_categoria.setText("Categoria");
+        menu_item_categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_categoriaActionPerformed(evt);
+            }
+        });
+        menu_mantenimiento.add(menu_item_categoria);
+
+        menu_item_medida.setText("Medida");
+        menu_item_medida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_medidaActionPerformed(evt);
+            }
+        });
+        menu_mantenimiento.add(menu_item_medida);
+
+        menu_item_usuario.setText("Usuario");
+        menu_item_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_usuarioActionPerformed(evt);
+            }
+        });
+        menu_mantenimiento.add(menu_item_usuario);
 
         jMenuBar1.add(menu_mantenimiento);
 
@@ -153,17 +196,14 @@ public class Menu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 932, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(escritorio)
-                .addContainerGap())
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(escritorio)
-                .addContainerGap())
+                .addComponent(escritorio))
         );
 
         pack();
@@ -172,39 +212,72 @@ public class Menu extends javax.swing.JFrame {
 
     private void menu_item_tipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_tipoUsuarioActionPerformed
         // TODO add your handling code here:
-        
-        TipoUsuario_IU frame= new TipoUsuario_IU();
+
+        TipoUsuario_IU frame = new TipoUsuario_IU();
         escritorio.add(frame);
-        Dimension desktopSize=escritorio.getSize();
+        Dimension desktopSize = escritorio.getSize();
         Dimension FrameSize = frame.getSize();
-        frame.setLocation((desktopSize.width= FrameSize.width)/2, (desktopSize.height= FrameSize.height)/2);
-        
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
         frame.show();
-        
+
     }//GEN-LAST:event_menu_item_tipoUsuarioActionPerformed
 
     private void menu_item_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_usuarioActionPerformed
         // TODO add your handling code here:
-        Usuario_IU frame = new Usuario_IU();
-        escritorio.add(frame);
-        Dimension desktopSize=escritorio.getSize();
-        Dimension FrameSize = frame.getSize();
-        frame.setLocation((desktopSize.width= FrameSize.width)/2, (desktopSize.height= FrameSize.height)/2);
+        Usuarios_IU frame=new Usuarios_IU();
         
+        escritorio.add(frame);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
         frame.show();
     }//GEN-LAST:event_menu_item_usuarioActionPerformed
 
     private void menu_item_turnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_turnoActionPerformed
         // TODO add your handling code here:
-        Turno_IU frame= new Turno_IU();
-        
+        Turno_IU frame = new Turno_IU();
         escritorio.add(frame);
-        Dimension desktopSize=escritorio.getSize();
+        Dimension desktopSize = escritorio.getSize();
         Dimension FrameSize = frame.getSize();
-        frame.setLocation((desktopSize.width= FrameSize.width)/2, (desktopSize.height= FrameSize.height)/2);
-        
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
         frame.show();
     }//GEN-LAST:event_menu_item_turnoActionPerformed
+
+    private void menu_item_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_marcaActionPerformed
+        // TODO add your handling code here:
+        Marca_IU frame = new Marca_IU();
+        escritorio.add(frame);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
+        frame.show();
+    }//GEN-LAST:event_menu_item_marcaActionPerformed
+
+    private void menu_item_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_categoriaActionPerformed
+        // TODO add your handling code here:
+        Categoria_IU frame = new Categoria_IU();
+        escritorio.add(frame);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
+        frame.show();
+    }//GEN-LAST:event_menu_item_categoriaActionPerformed
+
+    private void menu_item_medidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_medidaActionPerformed
+        // TODO add your handling code here:
+        Medida_IU frame = new Medida_IU();
+        escritorio.add(frame);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
+        frame.show();
+    }//GEN-LAST:event_menu_item_medidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,10 +324,21 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnVentas;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
+    private javax.swing.JToolBar.Separator jSeparator6;
+    private javax.swing.JToolBar.Separator jSeparator7;
+    private javax.swing.JToolBar.Separator jSeparator8;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu menu_caja;
     private javax.swing.JMenu menu_compras;
     private javax.swing.JMenu menu_inventario;
+    private javax.swing.JMenuItem menu_item_categoria;
+    private javax.swing.JMenuItem menu_item_marca;
+    private javax.swing.JMenuItem menu_item_medida;
     private javax.swing.JMenuItem menu_item_tipoUsuario;
     private javax.swing.JMenuItem menu_item_turno;
     private javax.swing.JMenuItem menu_item_usuario;

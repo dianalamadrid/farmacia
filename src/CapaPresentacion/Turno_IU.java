@@ -118,6 +118,9 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         tabla_reporte_turno = new javax.swing.JTable();
         btnCerrar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("TURNO");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Usuario"));
@@ -195,6 +198,11 @@ public class Turno_IU extends javax.swing.JInternalFrame {
                 txtHoraInicioFocusLost(evt);
             }
         });
+        txtHoraInicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHoraInicioKeyPressed(evt);
+            }
+        });
 
         jLabel4.setText("HORA FINAL");
 
@@ -204,6 +212,11 @@ public class Turno_IU extends javax.swing.JInternalFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtHoraFinalFocusLost(evt);
+            }
+        });
+        txtHoraFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHoraFinalKeyPressed(evt);
             }
         });
 
@@ -286,6 +299,11 @@ public class Turno_IU extends javax.swing.JInternalFrame {
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png"))); // NOI18N
         btnCerrar.setText("CERRAR");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -312,7 +330,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCerrar)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -466,6 +484,27 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         txtHoraFinal.setBackground(Color.white);
     }//GEN-LAST:event_txtHoraFinalFocusLost
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void txtHoraInicioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraInicioKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtHoraFinal.requestFocus();
+            
+        }
+    }//GEN-LAST:event_txtHoraInicioKeyPressed
+
+    private void txtHoraFinalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraFinalKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            cmbTurno.requestFocus();
+            
+        }
+    }//GEN-LAST:event_txtHoraFinalKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

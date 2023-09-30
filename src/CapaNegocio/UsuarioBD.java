@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -201,6 +203,39 @@ public class UsuarioBD {
             return null;
         }
         return tabla_temporal;
+    }
+
+    public List<Usuario> login(String dni, String clave) {
+
+        List<Usuario> lista = new ArrayList<>();
+        sql = "SELECT uDni,uNombre,uApellidos,uDireccion,uClave,uCelular,idTipousuario,tienda FROM usuario "
+                + "WHERE uDni=? AND uClave=?";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, dni);
+            pst.setString(2, clave);
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                Usuario oUsuario = new Usuario();
+                oUsuario.setuDni(rs.getString(1));
+                oUsuario.setuNombre(rs.getString(2));
+                oUsuario.setuApellidos(rs.getString(3));
+                oUsuario.setuDireccion(rs.getString(4));
+                oUsuario.setuClave(rs.getString(5));
+                oUsuario.setuCelular(rs.getString(6));
+                oUsuario.setuTipo(rs.getInt(7));
+                oUsuario.setTienda(rs.getString(8));
+
+                lista.add(oUsuario);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en el login");
+        }
+        return lista;
     }
 
 }

@@ -6,6 +6,8 @@ package CapaPresentacion;
 
 import CapaDatos.Categoria;
 import CapaNegocio.CategoriaBD;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -72,7 +74,7 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
 
             for (int i = 0; i < lista_categorias.size(); i++) {
                 int idcategoria = lista_categorias.get(i).getIdcategoria();
-                String maNombre = lista_categorias.get(i).getCatNombre();
+                String maNombre = lista_categorias.get(i).getCaNombre();
                 Object[] data = {idcategoria, maNombre};
                 tabla_temporal.addRow(data);
 
@@ -113,16 +115,43 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
         txtCantidad = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("CATEGORIA");
 
         jLabel1.setText("ID");
 
         txtId.setEnabled(false);
 
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+        });
+
         jLabel2.setText("NOMBRE");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Busca Categorias"));
 
         jLabel3.setText("CATEGORIA");
 
+        txtBuscarCategoria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscarCategoriaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscarCategoriaFocusLost(evt);
+            }
+        });
         txtBuscarCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBuscarCategoriaKeyPressed(evt);
@@ -152,13 +181,13 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
 
         tabla_reporte_categorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "NOMBRE"
             }
         ));
         tabla_reporte_categorias.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,6 +197,7 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tabla_reporte_categorias);
 
+        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
         btnRegistrar.setText("REGISTRAR");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +205,7 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
             }
         });
 
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/report_user_1.png"))); // NOI18N
         btnModificar.setText("MODIFICAR");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +213,7 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar2.png"))); // NOI18N
         btnEliminar.setText("ELIMINAR");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,9 +221,21 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
             }
         });
 
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar.png"))); // NOI18N
         btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png"))); // NOI18N
         btnCerrar.setText("CERRAR");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         txtCantidad.setEnabled(false);
 
@@ -229,7 +273,7 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
                         .addComponent(btnLimpiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCerrar)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +300,7 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
                     .addComponent(btnEliminar)
                     .addComponent(btnLimpiar)
                     .addComponent(btnCerrar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -266,11 +310,11 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (txtId.getText().length() == 0) {
 
-            if (txtNombre.getText().length() == 0) {
+            if (txtNombre.getText().length() > 0) {
 
                 Categoria oCategoria = new Categoria();
                 CategoriaBD oCategoriaBD = new CategoriaBD();
-                oCategoria.setCatNombre(txtNombre.getText().toUpperCase().trim());
+                oCategoria.setCaNombre(txtNombre.getText().toUpperCase().trim());
 
                 boolean rpta = oCategoriaBD.registrarCategoria(oCategoria);
 
@@ -318,7 +362,7 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
                 CategoriaBD oCategoriaBD = new CategoriaBD();
 
                 oCategoria.setIdcategoria(Integer.parseInt(txtId.getText().toUpperCase().trim()));
-                oCategoria.setCatNombre(txtNombre.getText().toUpperCase().trim());
+                oCategoria.setCaNombre(txtNombre.getText().toUpperCase().trim());
 
                 boolean rpta = oCategoriaBD.modificarCategoria(oCategoria);
 
@@ -393,7 +437,7 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
             for (int i = 0; i < lista_categorias.size(); i++) {
 
                 int idcategoria = lista_categorias.get(i).getIdcategoria();
-                String maNombre = lista_categorias.get(i).getCatNombre();
+                String maNombre = lista_categorias.get(i).getCaNombre();
                 Object[] data = {idcategoria, maNombre};
                 tabla_temporal.addRow(data);
 
@@ -406,6 +450,44 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_txtBuscarCategoriaKeyPressed
+
+    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
+        // TODO add your handling code here:
+        txtNombre.setBackground(Color.pink);
+    }//GEN-LAST:event_txtNombreFocusGained
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnRegistrar.requestFocus();
+            btnRegistrar.doClick();
+        }
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        // TODO add your handling code here:
+         txtNombre.setBackground(Color.white);
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtBuscarCategoriaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarCategoriaFocusGained
+        // TODO add your handling code here:
+         txtBuscarCategoria.setBackground(Color.pink);
+    }//GEN-LAST:event_txtBuscarCategoriaFocusGained
+
+    private void txtBuscarCategoriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarCategoriaFocusLost
+        // TODO add your handling code here:
+        txtBuscarCategoria.setBackground(Color.white);
+    }//GEN-LAST:event_txtBuscarCategoriaFocusLost
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

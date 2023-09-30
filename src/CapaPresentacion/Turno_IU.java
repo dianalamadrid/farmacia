@@ -223,6 +223,11 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         jLabel5.setText("TURNO");
 
         cmbTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar turno", "TURNO 1", "TURNO 2", "TURNO 3", "TURNO 4" }));
+        cmbTurno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbTurnoKeyPressed(evt);
+            }
+        });
 
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/report_user_1.png"))); // NOI18N
         btnRegistrar.setText("REGISTRAR");
@@ -281,13 +286,13 @@ public class Turno_IU extends javax.swing.JInternalFrame {
 
         tabla_reporte_turno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "DESCRIPCION", "HORA INICIO", "HORA FINAL", "USUARIO"
             }
         ));
         tabla_reporte_turno.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -330,7 +335,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCerrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -505,6 +510,14 @@ public class Turno_IU extends javax.swing.JInternalFrame {
             
         }
     }//GEN-LAST:event_txtHoraFinalKeyPressed
+
+    private void cmbTurnoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbTurnoKeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnRegistrar.requestFocus();
+            btnRegistrar.doClick();
+        }
+    }//GEN-LAST:event_cmbTurnoKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

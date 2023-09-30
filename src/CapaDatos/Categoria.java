@@ -11,14 +11,14 @@ package CapaDatos;
 public class Categoria {
     
     private int idcategoria;
-    private String catNombre;
+    private String caNombre;
 
     public Categoria() {
     }
 
-    public Categoria(int idcategoria, String catNombre) {
+    public Categoria(int idcategoria, String caNombre) {
         this.idcategoria = idcategoria;
-        this.catNombre = catNombre;
+        this.caNombre = caNombre;
     }
 
     public int getIdcategoria() {
@@ -29,13 +29,15 @@ public class Categoria {
         this.idcategoria = idcategoria;
     }
 
-    public String getCatNombre() {
-        return catNombre;
+    public String getCaNombre() {
+        return caNombre;
     }
 
-    public void setCatNombre(String catNombre) {
-        this.catNombre = catNombre;
+    public void setCaNombre(String caNombre) {
+        this.caNombre = caNombre;
     }
+
+    
     
     
     

@@ -6,6 +6,8 @@ package CapaPresentacion;
 
 import CapaDatos.Medida;
 import CapaNegocio.MedidaBD;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,6 +22,7 @@ public class Medida_IU extends javax.swing.JInternalFrame {
      */
     public Medida_IU() {
         initComponents();
+        reporte_medida();
 
     }
 
@@ -96,9 +99,42 @@ public class Medida_IU extends javax.swing.JInternalFrame {
         btnLimpiar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("MEDIDA");
 
         jLabel1.setText("CODIGO");
+
+        txtCodigo.setEnabled(false);
+
+        txtPresentacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPresentacionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPresentacionFocusLost(evt);
+            }
+        });
+        txtPresentacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPresentacionKeyPressed(evt);
+            }
+        });
+
+        txtEquivalencia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEquivalenciaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEquivalenciaFocusLost(evt);
+            }
+        });
+        txtEquivalencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEquivalenciaKeyPressed(evt);
+            }
+        });
 
         jLabel2.setText("PRESENTACION");
 
@@ -106,13 +142,13 @@ public class Medida_IU extends javax.swing.JInternalFrame {
 
         tabla_reporte_medida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "PRESENTACION", "EQUIVALENCIA"
             }
         ));
         tabla_reporte_medida.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,8 +158,11 @@ public class Medida_IU extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tabla_reporte_medida);
 
+        txtCantidad.setEnabled(false);
+
         jLabel4.setText("CANTIDAD");
 
+        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
         btnRegistrar.setText("REGISTRAR");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +170,7 @@ public class Medida_IU extends javax.swing.JInternalFrame {
             }
         });
 
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/report_user_1.png"))); // NOI18N
         btnModificar.setText("MODIFICAR");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,6 +178,7 @@ public class Medida_IU extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar2.png"))); // NOI18N
         btnEliminar.setText("ELIMINAR");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,9 +186,21 @@ public class Medida_IU extends javax.swing.JInternalFrame {
             }
         });
 
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar.png"))); // NOI18N
         btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png"))); // NOI18N
         btnCerrar.setText("CERRAR");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,12 +235,12 @@ public class Medida_IU extends javax.swing.JInternalFrame {
                         .addComponent(btnLimpiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCerrar)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,8 +263,7 @@ public class Medida_IU extends javax.swing.JInternalFrame {
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
                     .addComponent(btnLimpiar)
-                    .addComponent(btnCerrar))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addComponent(btnCerrar)))
         );
 
         pack();
@@ -282,7 +334,7 @@ public class Medida_IU extends javax.swing.JInternalFrame {
 
             if (txtEquivalencia.getText().length() > 0) {
 
-                if (txtCodigo.getText().length() == 0) {
+                if (txtCodigo.getText().length() > 0) {
 
                     Medida oMedida = new Medida();
                     MedidaBD oMedidaBD = new MedidaBD();
@@ -349,6 +401,52 @@ public class Medida_IU extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtPresentacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPresentacionFocusGained
+        // TODO add your handling code here:
+        txtPresentacion.setBackground(Color.pink);
+    }//GEN-LAST:event_txtPresentacionFocusGained
+
+    private void txtPresentacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPresentacionFocusLost
+        // TODO add your handling code here:
+        txtPresentacion.setBackground(Color.white);
+    }//GEN-LAST:event_txtPresentacionFocusLost
+
+    private void txtEquivalenciaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEquivalenciaFocusGained
+        // TODO add your handling code here:
+        txtEquivalencia.setBackground(Color.pink);
+    }//GEN-LAST:event_txtEquivalenciaFocusGained
+
+    private void txtEquivalenciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEquivalenciaFocusLost
+        // TODO add your handling code here:
+        txtEquivalencia.setBackground(Color.white);
+    }//GEN-LAST:event_txtEquivalenciaFocusLost
+
+    private void txtPresentacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPresentacionKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtEquivalencia.requestFocus();
+            
+        }
+    }//GEN-LAST:event_txtPresentacionKeyPressed
+
+    private void txtEquivalenciaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEquivalenciaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnRegistrar.requestFocus();
+            btnRegistrar.doClick();
+        }
+    }//GEN-LAST:event_txtEquivalenciaKeyPressed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        limpiar_cajas();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

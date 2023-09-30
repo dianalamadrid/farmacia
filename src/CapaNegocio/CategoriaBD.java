@@ -25,7 +25,7 @@ public class CategoriaBD {
     
     public List<Categoria> reportarCategoria() {
         List<Categoria> lista = new ArrayList<>();
-        sql = "SELECT idcategoria, catNombre FROM categoria";
+        sql = "SELECT idcategoria, caNombre FROM categoria";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
@@ -35,7 +35,7 @@ public class CategoriaBD {
                 Categoria oCategoria = new Categoria();
                 
                 oCategoria.setIdcategoria(rs.getInt(1));
-                oCategoria.setCatNombre(rs.getString(2));
+                oCategoria.setCaNombre(rs.getString(2));
                 
                 lista.add(oCategoria);
             }
@@ -51,10 +51,10 @@ public class CategoriaBD {
     public boolean registrarCategoria(Categoria c) {
         boolean rpta = false;
         
-        sql = "INSERT INTO categoria(idcategoria,catNombre) VALUES(0,?)";
+        sql = "INSERT INTO categoria(idcategoria,caNombre) VALUES(0,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, c.getCatNombre());
+            pst.setString(1, c.getCaNombre());
             rpta = pst.executeUpdate() == 1 ? true : false;
             
         } catch (Exception e) {
@@ -69,10 +69,10 @@ public class CategoriaBD {
         
         boolean rpta = false;
         
-        sql = "UPDATE categoria SET catNombre WHERE idcategoria=?";
+        sql = "UPDATE categoria SET caNombre WHERE idcategoria=?";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, c.getCatNombre());
+            pst.setString(1, c.getCaNombre());
             pst.setInt(2, c.getIdcategoria());
             rpta = pst.executeUpdate() == 1 ? true : false;
             
@@ -105,7 +105,7 @@ public class CategoriaBD {
     public List<Categoria> buscarCategorias(String valor) {
         List<Categoria> lista = new ArrayList<>();
         
-        sql = "SELECT idcategoria,catNombre FROM categoria WHERE catNombre LIKE ?";
+        sql = "SELECT idcategoria,caNombre FROM categoria WHERE caNombre LIKE ?";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, "%" + valor + "%");
@@ -115,13 +115,13 @@ public class CategoriaBD {
                 Categoria oCategoria = new Categoria();
                 
                 oCategoria.setIdcategoria(rs.getInt(1));
-                oCategoria.setCatNombre(rs.getString(2));
+                oCategoria.setCaNombre(rs.getString(2));
                 
                 lista.add(oCategoria);
             }
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Problemas al eliminar categoria...", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Problemas al buscar categoria...", JOptionPane.ERROR_MESSAGE);
             return null;
         }
         return lista;

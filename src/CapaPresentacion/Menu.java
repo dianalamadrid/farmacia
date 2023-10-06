@@ -49,14 +49,19 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_mantenimiento = new javax.swing.JMenu();
         menu_item_tipoUsuario = new javax.swing.JMenuItem();
+        menu_item_usuario = new javax.swing.JMenuItem();
         menu_item_turno = new javax.swing.JMenuItem();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
         menu_item_marca = new javax.swing.JMenuItem();
         menu_item_categoria = new javax.swing.JMenuItem();
         menu_item_medida = new javax.swing.JMenuItem();
-        menu_item_usuario = new javax.swing.JMenuItem();
         menu_item_producto = new javax.swing.JMenuItem();
         menu_item_composicion = new javax.swing.JMenuItem();
+        menu_item_proveedor = new javax.swing.JMenuItem();
+        menu_item_cuentas_bancarias = new javax.swing.JMenuItem();
         menu_compras = new javax.swing.JMenu();
+        menu_item_compras = new javax.swing.JMenuItem();
+        menu_item_reporte_compra_varios = new javax.swing.JMenuItem();
         menu_inventario = new javax.swing.JMenu();
         menu_ventas = new javax.swing.JMenu();
         menu_caja = new javax.swing.JMenu();
@@ -144,6 +149,14 @@ public class Menu extends javax.swing.JFrame {
         });
         menu_mantenimiento.add(menu_item_tipoUsuario);
 
+        menu_item_usuario.setText("Usuario");
+        menu_item_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_usuarioActionPerformed(evt);
+            }
+        });
+        menu_mantenimiento.add(menu_item_usuario);
+
         menu_item_turno.setText("Turno");
         menu_item_turno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +164,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menu_mantenimiento.add(menu_item_turno);
+        menu_mantenimiento.add(jSeparator9);
 
         menu_item_marca.setText("Laboratorio");
         menu_item_marca.addActionListener(new java.awt.event.ActionListener() {
@@ -176,14 +190,6 @@ public class Menu extends javax.swing.JFrame {
         });
         menu_mantenimiento.add(menu_item_medida);
 
-        menu_item_usuario.setText("Usuario");
-        menu_item_usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_item_usuarioActionPerformed(evt);
-            }
-        });
-        menu_mantenimiento.add(menu_item_usuario);
-
         menu_item_producto.setText("Producto");
         menu_item_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,10 +206,43 @@ public class Menu extends javax.swing.JFrame {
         });
         menu_mantenimiento.add(menu_item_composicion);
 
+        menu_item_proveedor.setText("Proveedor");
+        menu_item_proveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_proveedorActionPerformed(evt);
+            }
+        });
+        menu_mantenimiento.add(menu_item_proveedor);
+
+        menu_item_cuentas_bancarias.setText("Cuentas Bancarias");
+        menu_item_cuentas_bancarias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_cuentas_bancariasActionPerformed(evt);
+            }
+        });
+        menu_mantenimiento.add(menu_item_cuentas_bancarias);
+
         jMenuBar1.add(menu_mantenimiento);
 
         menu_compras.setText("COMPRAS");
         menu_compras.setEnabled(false);
+
+        menu_item_compras.setText("Realizar Compras");
+        menu_item_compras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_comprasActionPerformed(evt);
+            }
+        });
+        menu_compras.add(menu_item_compras);
+
+        menu_item_reporte_compra_varios.setText("Reporte de Compras Varios");
+        menu_item_reporte_compra_varios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_reporte_compra_variosActionPerformed(evt);
+            }
+        });
+        menu_compras.add(menu_item_reporte_compra_varios);
+
         jMenuBar1.add(menu_compras);
 
         menu_inventario.setText("INVENTARIO");
@@ -333,6 +372,53 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_menu_item_composicionActionPerformed
 
+    private void menu_item_proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_proveedorActionPerformed
+        // TODO add your handling code here:
+        Proveedor_IU frame =new Proveedor_IU();
+        escritorio.add(frame);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
+        frame.show();
+    }//GEN-LAST:event_menu_item_proveedorActionPerformed
+
+    private void menu_item_cuentas_bancariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_cuentas_bancariasActionPerformed
+        // TODO add your handling code here:
+        CuentasBancariasProveedor_IU frame= new CuentasBancariasProveedor_IU();
+        escritorio.add(frame);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
+        frame.show();
+        
+    }//GEN-LAST:event_menu_item_cuentas_bancariasActionPerformed
+
+    private void menu_item_comprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_comprasActionPerformed
+        // TODO add your handling code here:
+        
+        Compra_IU frame= new Compra_IU();
+        escritorio.add(frame);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
+        frame.show();
+        
+    }//GEN-LAST:event_menu_item_comprasActionPerformed
+
+    private void menu_item_reporte_compra_variosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_reporte_compra_variosActionPerformed
+        // TODO add your handling code here:
+        ReporteComprasVarios_IU frame =new ReporteComprasVarios_IU();
+        escritorio.add(frame);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width = FrameSize.width) / 2, (desktopSize.height = FrameSize.height) / 2);
+
+        frame.show();
+    }//GEN-LAST:event_menu_item_reporte_compra_variosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -386,15 +472,20 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JToolBar.Separator jSeparator7;
     private javax.swing.JToolBar.Separator jSeparator8;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JMenu menu_caja;
     public javax.swing.JMenu menu_compras;
     public javax.swing.JMenu menu_inventario;
     private javax.swing.JMenuItem menu_item_categoria;
     private javax.swing.JMenuItem menu_item_composicion;
+    private javax.swing.JMenuItem menu_item_compras;
+    private javax.swing.JMenuItem menu_item_cuentas_bancarias;
     private javax.swing.JMenuItem menu_item_marca;
     private javax.swing.JMenuItem menu_item_medida;
     private javax.swing.JMenuItem menu_item_producto;
+    private javax.swing.JMenuItem menu_item_proveedor;
+    private javax.swing.JMenuItem menu_item_reporte_compra_varios;
     private javax.swing.JMenuItem menu_item_tipoUsuario;
     private javax.swing.JMenuItem menu_item_turno;
     private javax.swing.JMenuItem menu_item_usuario;
